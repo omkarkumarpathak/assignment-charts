@@ -1,73 +1,27 @@
-# React + TypeScript + Vite
+<img width="1818" height="849" alt="image" src="https://github.com/user-attachments/assets/770ed559-8b5f-41aa-a146-3ac830346421" /><img width="1818" height="849" alt="image" src="https://github.com/user-attachments/assets/794eca8a-65d6-4bc5-9d4e-1722e259dd2d" />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+**Step-1: Created the project using react+typescript+npm**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    *) npm create vite@latest proj
+    *) cd proj
+    *) npm i
+    *) npm i echarts 
 
-## React Compiler
+Step-2: Downloaded CSV file and placed inside public/dataset.csv and did following things:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    *) Parsed the CSV in json format: used AI help for this
+    *) Selected unique cities, years, and fuel type to show in dropdown options
 
-## Expanding the ESLint configuration
+Step-3: Created useEffect hooks, regular functions like monthly average calculation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    *)  3 useState state variables for storing current selected year, selected city and selected fuel
+    *)  Event change on select changes these selected react states
+    *) used useEffect react hook to trigger the monthlyAverage if any changes happens in react state
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Step-4: UI & heavy computation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    *) useMemo react hook used to store the result of heavy cimputation so that we don't need to creat the funtion on every render
+    *) useRef is used as Apache ECharts is not a react componet and need html dom access
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    *) For UI: used display: flex as it's best in case of 1D eles data arrangement
