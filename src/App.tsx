@@ -140,7 +140,7 @@ export default function App() {
   return (
     <div style={{ padding: "30px", fontFamily: "sans-serif", position:'relative' }}>
       <h2>Retail Selling Price Dashboard</h2>
-      <span style={{position:'absolute', top:'2rem', left:'50rem'}}>Check for year: 2021, 2020 for better graphs</span>
+      <span style={{position:'absolute', top:'2rem', left:'50rem', fontWeight:900}}>Check for year: 2021, 2020 for better graphs</span>
       <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
         <select
           value={selectedCity}
